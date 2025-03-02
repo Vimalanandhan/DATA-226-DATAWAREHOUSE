@@ -1,26 +1,19 @@
 from airflow import DAG
 from airflow.models import Variable
 from airflow.decorators import task
-import snowflake.connector
+from airflow.providers.snowflake.hooks.snowflake import SnowflakeHook
 from datetime import datetime
 import requests
 import logging
 
 def return_snowflake_conn():
-    """Initialize Snowflake connection manually using `snowflake.connector`."""
+    """Initialize Snowflake connection using SnowflakeHook."""
     
-    # Retrieve credentials from Google Colab
-    snowflake_user = Variable.get("SNOWFLAKE_USER")
-    snowflake_password = Variable.get("SNOWFLAKE_PASSWORD")
-    snowflake_account = Variable.get("SNOWFLAKE_ACCOUNT")
-
-    # Connect to Snowflake
-    conn = snowflake.connector.connect(
-        user=snowflake_user,
-        password=snowflake_password,
-        account=snowflake_account
-    )
-    return conn.cursor()
+    # Initialize the SnowflakeHook using the connection ID stored in Airflow
+    hook = SnowflakeHook(snowflake_conn_id='snowflake_conn')
+    
+    # Return the cursor object
+    return hook.get_conn().cursor()
 
 @task
 def extract():
@@ -54,7 +47,7 @@ def transform(data):
 
 @task
 def load(records):
-    """Load transformed data into Snowflake"""
+    """Load transformed data into Snowflake using SnowflakeHook"""
     cur = return_snowflake_conn()
     try:
         cur.execute("BEGIN;")
