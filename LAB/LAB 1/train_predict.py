@@ -82,11 +82,27 @@ def predict_stock_prices():
     """
     create_final_table_sql = f"""
         CREATE OR REPLACE TABLE {FINAL_TABLE} AS
-        SELECT symbol, date, close AS actual, NULL AS forecast, NULL AS lower_bound, NULL AS upper_bound
-        FROM {TRAIN_INPUT_TABLE}
-        UNION ALL
-        SELECT replace(series, '"', '') as symbol, ts as date, NULL AS actual, forecast, lower_bound, upper_bound
-        FROM {FORECAST_TABLE};
+        SELECT * FROM (
+            -- Apple actual values
+            SELECT SYMBOL, DATE, CLOSE AS actual, NULL AS forecast, NULL AS lower_bound, NULL AS upper_bound
+            FROM {TRAIN_INPUT_TABLE}
+            WHERE SYMBOL = 'AAPL'
+            UNION ALL
+            -- Apple predicted values
+            SELECT REPLACE(series, '"', '') AS SYMBOL, ts AS DATE, NULL AS actual, forecast, lower_bound, upper_bound
+            FROM {FORECAST_TABLE}
+            WHERE REPLACE(series, '"', '') = 'AAPL'
+            UNION ALL
+            -- Meta actual values
+            SELECT SYMBOL, DATE, CLOSE AS actual, NULL AS forecast, NULL AS lower_bound, NULL AS upper_bound
+            FROM {TRAIN_INPUT_TABLE}
+            WHERE SYMBOL = 'META'
+            UNION ALL
+            -- Meta predicted values
+            SELECT REPLACE(series, '"', '') AS SYMBOL, ts AS DATE, NULL AS actual, forecast, lower_bound, upper_bound
+            FROM {FORECAST_TABLE}
+            WHERE REPLACE(series, '"', '') = 'META'
+        ) ORDER BY SYMBOL, DATE;
     """
     try:
         cursor.execute(make_prediction_sql)
