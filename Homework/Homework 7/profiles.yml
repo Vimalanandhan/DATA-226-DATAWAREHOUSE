@@ -3,7 +3,7 @@ build_mau:
     dev:
       account: sfedu02-ksb65579
       database: USER_DB_MACKEREL
-      password: James@Bond@007
+      password: 
       role: TRAINING_ROLE
       schema: ANALYTICS
       threads: 1
