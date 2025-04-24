@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stock_analytics
+    description: "Stock analytics with moving averages, RSI, and forecasts"
+    columns:
+      - name: SYMBOL
+        tests:
+          - not_null
+      - name: DATE
+        tests:
+          - not_null
+      - name: CLOSE
+        tests:
+          - not_null
+      - name: RSI_14D
+        tests:
+          - accepted_values:
+              values: [0, 100]  # RSI should be between 0 and 100
+              quote: false
+              config:
+                where: "RSI_14D < 0 OR RSI_14D > 100"
+                store_failures: true

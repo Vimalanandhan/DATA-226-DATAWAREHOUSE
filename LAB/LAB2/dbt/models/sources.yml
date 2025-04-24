@@ -1,0 +1,26 @@
+version: 2
+
+sources:
+  - name: stock_data
+    database: "{{ env_var('DBT_DATABASE') }}"
+    schema: "{{ env_var('DBT_SCHEMA') }}"
+    tables:
+      - name: stock_input
+        description: "Raw stock data loaded from yfinance"
+        columns:
+          - name: symbol_date_key
+            description: "Primary key combining symbol and date"
+          - name: date
+            description: "Date of the stock data"
+          - name: symbol
+            description: "Stock symbol"
+          - name: open
+            description: "Opening price"
+          - name: high
+            description: "High price"
+          - name: low
+            description: "Low price"
+          - name: close
+            description: "Closing price"
+          - name: volume
+            description: "Trading volume" 
