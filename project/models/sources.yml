@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: raw                   # this is your source-name
+    database: USER_DB_FALCON
+    schema: RAW               # the schema where your staging tables live
+    tables:
+      - name: ADDRESS_STAGING
+      - name: CUSTOMER_STAGING
+      - name: DEMOGRAPHIC_STAGING
+      - name: TERMINATION_STAGING
+      - name: AUTOINSURANCE_CHURN_STAGING
+      - name: TURNING_MOVEMENT
+  - name: customer_churn
+    database: USER_DB_FALCON
+    schema: RAW
+    tables:
+      - name: customer_churn

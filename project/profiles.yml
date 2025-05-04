@@ -1,0 +1,29 @@
+customer_churn:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: SFEDU02-KSB65579
+      user: FALCON
+      password: Nakshatradesai@11
+      role: TRAINING_ROLE  # (optional, but recommended if you have a specific role)
+      database: USER_DB_FALCON
+      warehouse: FALCON_QUERY_WH
+      schema: RAW
+      threads: 4
+      client_session_keep_alive: False 
+
+version: 2
+
+sources:
+  - name: raw
+    database: USER_DB_FALCON
+    schema: RAW
+    tables:
+      - name: ADDRESS_STAGING
+      - name: CUSTOMER_STAGING
+      - name: DEMOGRAPHIC_STAGING
+      - name: TERMINATION_STAGING
+      - name: AUTOINSURANCE_CHURN_STAGING
+      - name: TURNING_MOVEMENT
+

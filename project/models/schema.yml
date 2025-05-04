@@ -1,0 +1,249 @@
+version: 2
+
+models:
+  - name: stg_customer
+    description: "Staging model for customer data."
+    columns:
+      - name: individual_id
+        description: "Unique customer identifier."
+        tests: [not_null]
+      - name: address_id
+        description: "Address identifier."
+      - name: annual_premium
+        description: "Current annual premium."
+      - name: days_tenure
+        description: "Number of days as a customer."
+      - name: cust_orig_date
+        description: "Customer original join date."
+
+  - name: stg_address
+    description: "Staging model for address data."
+    columns:
+      - name: address_id
+        description: "Address identifier."
+        tests: [not_null]
+      - name: street_address
+        description: "Street address."
+      - name: city
+        description: "City."
+      - name: state
+        description: "State."
+      - name: county
+        description: "County."
+      - name: lat
+        description: "Latitude."
+      - name: lon
+        description: "Longitude."
+
+  - name: stg_demographic
+    description: "Staging model for demographic data."
+    columns:
+      - name: individual_id
+        description: "Unique customer identifier."
+        tests: [not_null]
+      - name: age_in_years
+        description: "Customer age in years."
+      - name: date_of_birth
+        description: "Date of birth."
+      - name: has_children
+        description: "Has children flag."
+      - name: marital_status
+        description: "Marital status."
+      - name: home_owner
+        description: "Home owner flag."
+      - name: home_market_value
+        description: "Home market value."
+      - name: length_of_residence
+        description: "Length of residence."
+      - name: college_degree
+        description: "College degree flag."
+
+  - name: stg_termination
+    description: "Staging model for termination/churn data."
+    columns:
+      - name: individual_id
+        description: "Unique customer identifier."
+        tests: [not_null]
+      - name: churn_date
+        description: "Account suspension (churn) date."
+
+  - name: stg_autoinsurance_churn
+    description: "Staging model for churn flag."
+    columns:
+      - name: individual_id
+        description: "Unique customer identifier."
+        tests: [not_null]
+      - name: churn_flag
+        description: "Churn flag (1=churn, 0=keep)."
+
+  - name: stg_turning_movement
+    description: "Staging model for turning movement data."
+    columns:
+      - name: objectid
+        description: "Object ID."
+      - name: facilityid
+        description: "Facility ID."
+      - name: intid
+        description: "Intersection ID."
+      - name: intname
+        description: "Intersection name."
+      - name: nodeno
+        description: "Node number."
+      - name: tm_lon
+        description: "Turning movement longitude."
+      - name: tm_lat
+        description: "Turning movement latitude."
+
+  - name: int_customer_enriched
+    description: "Intermediate model joining customer, address, and demographic data."
+    columns:
+      - name: individual_id
+        description: "Unique customer identifier."
+        tests: [not_null]
+      - name: annual_premium
+        description: "Current annual premium."
+      - name: days_tenure
+        description: "Number of days as a customer."
+      - name: cust_orig_date
+        description: "Customer original join date."
+      - name: age_in_years
+        description: "Customer age in years."
+      - name: marital_status
+        description: "Marital status."
+      - name: has_children
+        description: "Has children flag."
+      - name: home_owner
+        description: "Home owner flag."
+      - name: home_market_value
+        description: "Home market value."
+      - name: length_of_residence
+        description: "Length of residence."
+      - name: city
+        description: "City."
+      - name: state
+        description: "State."
+      - name: county
+        description: "County."
+      - name: lat
+        description: "Latitude."
+      - name: lon
+        description: "Longitude."
+
+  - name: fact_churn
+    description: "Fact table for customer churn events."
+    columns:
+      - name: individual_id
+        description: "Unique customer identifier."
+        tests: [not_null]
+      - name: churn_date
+        description: "Churn date."
+        tests: [not_null]
+      - name: city
+        description: "City."
+      - name: state
+        description: "State."
+      - name: county
+        description: "County."
+      - name: age_in_years
+        description: "Customer age in years."
+      - name: days_tenure
+        description: "Number of days as a customer."
+      - name: annual_premium
+        description: "Current annual premium."
+      - name: churn_flag
+        description: "Churn flag (1=churn, 0=keep)."
+
+  - name: dim_customer
+    description: "Customer dimension table."
+    columns:
+      - name: individual_id
+        description: "Unique customer identifier."
+        tests: [not_null]
+      - name: age
+        description: "Customer age."
+      - name: marital_status
+        description: "Marital status."
+      - name: has_children
+        description: "Has children flag."
+      - name: length_of_residence
+        description: "Length of residence."
+
+  - name: dim_address
+    description: "Address dimension table."
+    columns:
+      - name: individual_id
+        description: "Unique customer identifier."
+        tests: [not_null]
+      - name: city
+        description: "City."
+      - name: state
+        description: "State."
+      - name: county
+        description: "County."
+      - name: lat
+        description: "Latitude."
+      - name: lon
+        description: "Longitude."
+
+  - name: churn_metrics
+    description: "Aggregated churn metrics for visualization."
+    columns:
+      - name: month
+        description: "Month of churn event."
+      - name: churn_count
+        description: "Number of churn events."
+      - name: state
+        description: "State."
+      - name: age_bucket
+        description: "Age bucket."
+      - name: tenure_bucket
+        description: "Tenure bucket."
+      - name: premium_bucket
+        description: "Premium bucket."
+      - name: churn_date
+        description: "Churn date."
+      - name: churn_flag
+        description: "Churn flag."
+      - name: lat
+        description: "Latitude."
+      - name: lon
+        description: "Longitude."
+
+  - name: stock_indicators
+    description: "Final output table containing all stock indicators"
+    columns:
+      - name: symbol_date_key
+        description: "Primary key combining symbol and date"
+        tests:
+          - unique
+          - not_null
+      - name: symbol
+        description: "Stock symbol"
+      - name: close
+        description: "Closing price"
+      - name: ma_5
+        description: "5-day moving average"
+      - name: ma_20
+        description: "20-day moving average"
+      - name: trend
+        description: "Current trend (uptrend/downtrend/sideways)"
+      - name: avg_gain
+        description: "Average gain for RSI calculation"
+      - name: avg_loss
+        description: "Average loss for RSI calculation"
+      - name: rsi
+        description: "Relative Strength Index"
+      - name: daily_price_return
+        description: "Daily price return percentage"
+
+  - name: stock_input
+    description: "Raw stock input data from source table"
+    columns:
+      - name: symbol_date_key
+        description: "Primary key for stock input data"
+        tests:
+          - not_null
+      - name: symbol
+        description: "Stock symbol"
+      - name: close
+        description: "Closing price" 
