@@ -1,0 +1,42 @@
+[2025-05-05T23:59:25.198+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-05-05T23:59:25.227+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_run_marts manual__2025-05-05T23:53:52.064784+00:00 [queued]>
+[2025-05-05T23:59:25.237+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_run_marts manual__2025-05-05T23:53:52.064784+00:00 [queued]>
+[2025-05-05T23:59:25.238+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-05-05T23:59:25.250+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): dbt_run_marts> on 2025-05-05 23:53:52.064784+00:00
+[2025-05-05T23:59:25.258+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=2035) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-05-05T23:59:25.257+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dbt_sequential_run', 'dbt_run_marts', 'manual__2025-05-05T23:53:52.064784+00:00', '--job-id', '43', '--raw', '--subdir', 'DAGS_FOLDER/dbt_run_dag.py', '--cfg-path', '/tmp/tmp2dm0a84f']
+[2025-05-05T23:59:25.259+0000] {standard_task_runner.py:72} INFO - Started process 2036 to run task
+[2025-05-05T23:59:25.260+0000] {standard_task_runner.py:105} INFO - Job 43: Subtask dbt_run_marts
+[2025-05-05T23:59:25.295+0000] {task_command.py:467} INFO - Running <TaskInstance: dbt_sequential_run.dbt_run_marts manual__2025-05-05T23:53:52.064784+00:00 [running]> on host 5f6a5c55bc08
+[2025-05-05T23:59:25.370+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_sequential_run' AIRFLOW_CTX_TASK_ID='dbt_run_marts' AIRFLOW_CTX_EXECUTION_DATE='2025-05-05T23:53:52.064784+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-05-05T23:53:52.064784+00:00'
+[2025-05-05T23:59:25.371+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-05-05T23:59:25.384+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-05-05T23:59:25.385+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '/home/***/.local/bin/dbt run --profiles-dir /opt/***/dbt --project-dir /opt/***/dbt --select marts']
+[2025-05-05T23:59:25.391+0000] {subprocess.py:86} INFO - Output:
+[2025-05-05T23:59:26.845+0000] {subprocess.py:93} INFO - [0m23:59:26  Running with dbt=1.8.7
+[2025-05-05T23:59:27.913+0000] {subprocess.py:93} INFO - [0m23:59:27  Registered adapter: snowflake=1.8.1
+[2025-05-05T23:59:29.310+0000] {subprocess.py:93} INFO - [0m23:59:29  Found 12 models, 10 data tests, 7 sources, 459 macros
+[2025-05-05T23:59:29.316+0000] {subprocess.py:93} INFO - [0m23:59:29
+[2025-05-05T23:59:31.323+0000] {subprocess.py:93} INFO - [0m23:59:31  Concurrency: 4 threads (target='dev')
+[2025-05-05T23:59:31.326+0000] {subprocess.py:93} INFO - [0m23:59:31
+[2025-05-05T23:59:31.353+0000] {subprocess.py:93} INFO - [0m23:59:31  1 of 5 START sql table model RAW_public.dim_address ............................ [RUN]
+[2025-05-05T23:59:31.356+0000] {subprocess.py:93} INFO - [0m23:59:31  2 of 5 START sql table model RAW_public.dim_customer ........................... [RUN]
+[2025-05-05T23:59:31.359+0000] {subprocess.py:93} INFO - [0m23:59:31  3 of 5 START sql incremental model RAW_public.fact_churn ....................... [RUN]
+[2025-05-05T23:59:34.847+0000] {subprocess.py:93} INFO - [0m23:59:34  3 of 5 OK created sql incremental model RAW_public.fact_churn .................. [[32mSUCCESS 0[0m in 3.48s]
+[2025-05-05T23:59:34.855+0000] {subprocess.py:93} INFO - [0m23:59:34  4 of 5 START sql table model RAW_public.churn_metrics .......................... [RUN]
+[2025-05-05T23:59:35.817+0000] {subprocess.py:93} INFO - [0m23:59:35  2 of 5 OK created sql table model RAW_public.dim_customer ...................... [[32mSUCCESS 1[0m in 4.45s]
+[2025-05-05T23:59:35.944+0000] {subprocess.py:93} INFO - [0m23:59:35  1 of 5 OK created sql table model RAW_public.dim_address ....................... [[32mSUCCESS 1[0m in 4.58s]
+[2025-05-05T23:59:35.951+0000] {subprocess.py:93} INFO - [0m23:59:35  5 of 5 START sql table model RAW_public.churn_map .............................. [RUN]
+[2025-05-05T23:59:36.867+0000] {subprocess.py:93} INFO - [0m23:59:36  4 of 5 OK created sql table model RAW_public.churn_metrics ..................... [[32mSUCCESS 1[0m in 2.00s]
+[2025-05-05T23:59:37.733+0000] {subprocess.py:93} INFO - [0m23:59:37  5 of 5 OK created sql table model RAW_public.churn_map ......................... [[32mSUCCESS 1[0m in 1.78s]
+[2025-05-05T23:59:37.741+0000] {subprocess.py:93} INFO - [0m23:59:37
+[2025-05-05T23:59:37.742+0000] {subprocess.py:93} INFO - [0m23:59:37  Finished running 1 incremental model, 4 table models in 0 hours 0 minutes and 8.42 seconds (8.42s).
+[2025-05-05T23:59:37.975+0000] {subprocess.py:93} INFO - [0m23:59:37
+[2025-05-05T23:59:38.019+0000] {subprocess.py:93} INFO - [0m23:59:38  [32mCompleted successfully[0m
+[2025-05-05T23:59:38.034+0000] {subprocess.py:93} INFO - [0m23:59:38
+[2025-05-05T23:59:38.035+0000] {subprocess.py:93} INFO - [0m23:59:38  Done. PASS=5 WARN=0 ERROR=0 SKIP=0 TOTAL=5
+[2025-05-05T23:59:38.891+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-05-05T23:59:38.921+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-05-05T23:59:38.922+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=dbt_sequential_run, task_id=dbt_run_marts, run_id=manual__2025-05-05T23:53:52.064784+00:00, execution_date=20250505T235352, start_date=20250505T235925, end_date=20250505T235938
+[2025-05-05T23:59:38.969+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-05-05T23:59:38.981+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

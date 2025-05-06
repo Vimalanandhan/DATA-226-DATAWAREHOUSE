@@ -1,0 +1,24 @@
+[2025-05-06T00:28:29.681+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-05-06T00:28:29.699+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_deps manual__2025-05-06T00:04:35.922172+00:00 [queued]>
+[2025-05-06T00:28:29.713+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_deps manual__2025-05-06T00:04:35.922172+00:00 [queued]>
+[2025-05-06T00:28:29.720+0000] {taskinstance.py:2865} INFO - Starting attempt 2 of 3
+[2025-05-06T00:28:29.744+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): dbt_deps> on 2025-05-06 00:04:35.922172+00:00
+[2025-05-06T00:28:29.780+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dbt_sequential_run', 'dbt_deps', 'manual__2025-05-06T00:04:35.922172+00:00', '--job-id', '55', '--raw', '--subdir', 'DAGS_FOLDER/dbt_run_dag.py', '--cfg-path', '/tmp/tmp2m89k_ls']
+[2025-05-06T00:28:29.786+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=3132) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-05-06T00:28:29.795+0000] {standard_task_runner.py:105} INFO - Job 55: Subtask dbt_deps
+[2025-05-06T00:28:29.796+0000] {standard_task_runner.py:72} INFO - Started process 3133 to run task
+[2025-05-06T00:28:29.912+0000] {task_command.py:467} INFO - Running <TaskInstance: dbt_sequential_run.dbt_deps manual__2025-05-06T00:04:35.922172+00:00 [running]> on host 5f6a5c55bc08
+[2025-05-06T00:28:30.053+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_sequential_run' AIRFLOW_CTX_TASK_ID='dbt_deps' AIRFLOW_CTX_EXECUTION_DATE='2025-05-06T00:04:35.922172+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-05-06T00:04:35.922172+00:00'
+[2025-05-06T00:28:30.055+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-05-06T00:28:30.088+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-05-06T00:28:30.099+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '/home/***/.local/bin/dbt deps --profiles-dir /opt/***/dbt --project-dir /opt/***/dbt']
+[2025-05-06T00:28:30.111+0000] {subprocess.py:86} INFO - Output:
+[2025-05-06T00:28:33.052+0000] {subprocess.py:93} INFO - [0m00:28:33  Running with dbt=1.8.7
+[2025-05-06T00:28:33.398+0000] {subprocess.py:93} INFO - [0m00:28:33  Warning: No packages were found in packages.yml
+[2025-05-06T00:28:33.441+0000] {subprocess.py:93} INFO - [0m00:28:33  Warning: No packages were found in packages.yml
+[2025-05-06T00:28:34.015+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-05-06T00:28:34.057+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-05-06T00:28:34.064+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=dbt_sequential_run, task_id=dbt_deps, run_id=manual__2025-05-06T00:04:35.922172+00:00, execution_date=20250506T000435, start_date=20250506T002829, end_date=20250506T002834
+[2025-05-06T00:28:34.103+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-05-06T00:28:34.158+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-05-06T00:28:34.166+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

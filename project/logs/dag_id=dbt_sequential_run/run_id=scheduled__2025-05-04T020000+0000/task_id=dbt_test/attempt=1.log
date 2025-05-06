@@ -1,0 +1,53 @@
+[2025-05-05T23:59:51.993+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-05-05T23:59:52.015+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_test scheduled__2025-05-04T02:00:00+00:00 [queued]>
+[2025-05-05T23:59:52.027+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_test scheduled__2025-05-04T02:00:00+00:00 [queued]>
+[2025-05-05T23:59:52.028+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-05-05T23:59:52.045+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): dbt_test> on 2025-05-04 02:00:00+00:00
+[2025-05-05T23:59:52.055+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dbt_sequential_run', 'dbt_test', 'scheduled__2025-05-04T02:00:00+00:00', '--job-id', '47', '--raw', '--subdir', 'DAGS_FOLDER/dbt_run_dag.py', '--cfg-path', '/tmp/tmpj_uq3bfz']
+[2025-05-05T23:59:52.057+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=2185) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-05-05T23:59:52.058+0000] {standard_task_runner.py:105} INFO - Job 47: Subtask dbt_test
+[2025-05-05T23:59:52.058+0000] {standard_task_runner.py:72} INFO - Started process 2188 to run task
+[2025-05-05T23:59:52.115+0000] {task_command.py:467} INFO - Running <TaskInstance: dbt_sequential_run.dbt_test scheduled__2025-05-04T02:00:00+00:00 [running]> on host 5f6a5c55bc08
+[2025-05-05T23:59:52.220+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_sequential_run' AIRFLOW_CTX_TASK_ID='dbt_test' AIRFLOW_CTX_EXECUTION_DATE='2025-05-04T02:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-05-04T02:00:00+00:00'
+[2025-05-05T23:59:52.222+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-05-05T23:59:52.250+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-05-05T23:59:52.255+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '/home/***/.local/bin/dbt test --profiles-dir /opt/***/dbt --project-dir /opt/***/dbt']
+[2025-05-05T23:59:52.267+0000] {subprocess.py:86} INFO - Output:
+[2025-05-05T23:59:53.664+0000] {subprocess.py:93} INFO - [0m23:59:53  Running with dbt=1.8.7
+[2025-05-05T23:59:54.530+0000] {subprocess.py:93} INFO - [0m23:59:54  Registered adapter: snowflake=1.8.1
+[2025-05-05T23:59:55.615+0000] {subprocess.py:93} INFO - [0m23:59:55  Found 12 models, 10 data tests, 7 sources, 459 macros
+[2025-05-05T23:59:55.653+0000] {subprocess.py:93} INFO - [0m23:59:55
+[2025-05-05T23:59:56.449+0000] {subprocess.py:93} INFO - [0m23:59:56  Concurrency: 4 threads (target='dev')
+[2025-05-05T23:59:56.450+0000] {subprocess.py:93} INFO - [0m23:59:56
+[2025-05-05T23:59:56.462+0000] {subprocess.py:93} INFO - [0m23:59:56  1 of 10 START test not_null_dim_address_individual_id .......................... [RUN]
+[2025-05-05T23:59:56.462+0000] {subprocess.py:93} INFO - [0m23:59:56  2 of 10 START test not_null_dim_customer_individual_id ......................... [RUN]
+[2025-05-05T23:59:56.463+0000] {subprocess.py:93} INFO - [0m23:59:56  3 of 10 START test not_null_fact_churn_churn_date .............................. [RUN]
+[2025-05-05T23:59:56.464+0000] {subprocess.py:93} INFO - [0m23:59:56  4 of 10 START test not_null_fact_churn_individual_id ........................... [RUN]
+[2025-05-05T23:59:57.076+0000] {subprocess.py:93} INFO - [0m23:59:57  3 of 10 PASS not_null_fact_churn_churn_date .................................... [[32mPASS[0m in 0.61s]
+[2025-05-05T23:59:57.087+0000] {subprocess.py:93} INFO - [0m23:59:57  5 of 10 START test not_null_int_customer_enriched_individual_id ................ [RUN]
+[2025-05-05T23:59:57.183+0000] {subprocess.py:93} INFO - [0m23:59:57  4 of 10 PASS not_null_fact_churn_individual_id ................................. [[32mPASS[0m in 0.72s]
+[2025-05-05T23:59:57.188+0000] {subprocess.py:93} INFO - [0m23:59:57  6 of 10 START test not_null_stg_address_address_id ............................. [RUN]
+[2025-05-05T23:59:57.258+0000] {subprocess.py:93} INFO - [0m23:59:57  1 of 10 PASS not_null_dim_address_individual_id ................................ [[32mPASS[0m in 0.79s]
+[2025-05-05T23:59:57.342+0000] {subprocess.py:93} INFO - [0m23:59:57  7 of 10 START test not_null_stg_autoinsurance_churn_individual_id .............. [RUN]
+[2025-05-05T23:59:57.469+0000] {subprocess.py:93} INFO - [0m23:59:57  2 of 10 PASS not_null_dim_customer_individual_id ............................... [[32mPASS[0m in 1.00s]
+[2025-05-05T23:59:57.474+0000] {subprocess.py:93} INFO - [0m23:59:57  8 of 10 START test not_null_stg_customer_individual_id ......................... [RUN]
+[2025-05-05T23:59:57.855+0000] {subprocess.py:93} INFO - [0m23:59:57  6 of 10 PASS not_null_stg_address_address_id ................................... [[32mPASS[0m in 0.66s]
+[2025-05-05T23:59:57.866+0000] {subprocess.py:93} INFO - [0m23:59:57  9 of 10 START test not_null_stg_demographic_individual_id ...................... [RUN]
+[2025-05-05T23:59:58.011+0000] {subprocess.py:93} INFO - [0m23:59:58  7 of 10 PASS not_null_stg_autoinsurance_churn_individual_id .................... [[32mPASS[0m in 0.66s]
+[2025-05-05T23:59:58.029+0000] {subprocess.py:93} INFO - [0m23:59:58  10 of 10 START test not_null_stg_termination_individual_id ..................... [RUN]
+[2025-05-05T23:59:58.231+0000] {subprocess.py:93} INFO - [0m23:59:58  5 of 10 PASS not_null_int_customer_enriched_individual_id ...................... [[32mPASS[0m in 1.14s]
+[2025-05-05T23:59:58.661+0000] {subprocess.py:93} INFO - [0m23:59:58  8 of 10 PASS not_null_stg_customer_individual_id ............................... [[32mPASS[0m in 1.18s]
+[2025-05-05T23:59:58.802+0000] {subprocess.py:93} INFO - [0m23:59:58  9 of 10 PASS not_null_stg_demographic_individual_id ............................ [[32mPASS[0m in 0.93s]
+[2025-05-05T23:59:58.960+0000] {subprocess.py:93} INFO - [0m23:59:58  10 of 10 PASS not_null_stg_termination_individual_id ........................... [[32mPASS[0m in 0.92s]
+[2025-05-05T23:59:58.973+0000] {subprocess.py:93} INFO - [0m23:59:58
+[2025-05-05T23:59:58.974+0000] {subprocess.py:93} INFO - [0m23:59:58  Finished running 10 data tests in 0 hours 0 minutes and 3.32 seconds (3.32s).
+[2025-05-05T23:59:59.139+0000] {subprocess.py:93} INFO - [0m23:59:59
+[2025-05-05T23:59:59.139+0000] {subprocess.py:93} INFO - [0m23:59:59  [32mCompleted successfully[0m
+[2025-05-05T23:59:59.140+0000] {subprocess.py:93} INFO - [0m23:59:59
+[2025-05-05T23:59:59.141+0000] {subprocess.py:93} INFO - [0m23:59:59  Done. PASS=10 WARN=0 ERROR=0 SKIP=0 TOTAL=10
+[2025-05-05T23:59:59.713+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-05-05T23:59:59.737+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-05-05T23:59:59.739+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=dbt_sequential_run, task_id=dbt_test, run_id=scheduled__2025-05-04T02:00:00+00:00, execution_date=20250504T020000, start_date=20250505T235952, end_date=20250505T235959
+[2025-05-05T23:59:59.794+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-05-05T23:59:59.812+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-05-05T23:59:59.827+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

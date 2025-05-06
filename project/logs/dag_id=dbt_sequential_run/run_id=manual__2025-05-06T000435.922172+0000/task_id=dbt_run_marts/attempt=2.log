@@ -1,0 +1,43 @@
+[2025-05-06T00:28:59.535+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-05-06T00:28:59.549+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_run_marts manual__2025-05-06T00:04:35.922172+00:00 [queued]>
+[2025-05-06T00:28:59.557+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_run_marts manual__2025-05-06T00:04:35.922172+00:00 [queued]>
+[2025-05-06T00:28:59.558+0000] {taskinstance.py:2865} INFO - Starting attempt 2 of 3
+[2025-05-06T00:28:59.570+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): dbt_run_marts> on 2025-05-06 00:04:35.922172+00:00
+[2025-05-06T00:28:59.577+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dbt_sequential_run', 'dbt_run_marts', 'manual__2025-05-06T00:04:35.922172+00:00', '--job-id', '58', '--raw', '--subdir', 'DAGS_FOLDER/dbt_run_dag.py', '--cfg-path', '/tmp/tmpoc79xqbx']
+[2025-05-06T00:28:59.580+0000] {standard_task_runner.py:105} INFO - Job 58: Subtask dbt_run_marts
+[2025-05-06T00:28:59.584+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=3242) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-05-06T00:28:59.585+0000] {standard_task_runner.py:72} INFO - Started process 3243 to run task
+[2025-05-06T00:28:59.617+0000] {task_command.py:467} INFO - Running <TaskInstance: dbt_sequential_run.dbt_run_marts manual__2025-05-06T00:04:35.922172+00:00 [running]> on host 5f6a5c55bc08
+[2025-05-06T00:28:59.695+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_sequential_run' AIRFLOW_CTX_TASK_ID='dbt_run_marts' AIRFLOW_CTX_EXECUTION_DATE='2025-05-06T00:04:35.922172+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-05-06T00:04:35.922172+00:00'
+[2025-05-06T00:28:59.696+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-05-06T00:28:59.712+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-05-06T00:28:59.714+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '/home/***/.local/bin/dbt run --profiles-dir /opt/***/dbt --project-dir /opt/***/dbt --select marts']
+[2025-05-06T00:28:59.721+0000] {subprocess.py:86} INFO - Output:
+[2025-05-06T00:29:01.972+0000] {subprocess.py:93} INFO - [0m00:29:01  Running with dbt=1.8.7
+[2025-05-06T00:29:03.407+0000] {subprocess.py:93} INFO - [0m00:29:03  Registered adapter: snowflake=1.8.1
+[2025-05-06T00:29:04.592+0000] {subprocess.py:93} INFO - [0m00:29:04  Found 12 models, 10 data tests, 7 sources, 459 macros
+[2025-05-06T00:29:04.597+0000] {subprocess.py:93} INFO - [0m00:29:04
+[2025-05-06T00:29:06.116+0000] {subprocess.py:93} INFO - [0m00:29:06  Concurrency: 4 threads (target='dev')
+[2025-05-06T00:29:06.117+0000] {subprocess.py:93} INFO - [0m00:29:06
+[2025-05-06T00:29:06.144+0000] {subprocess.py:93} INFO - [0m00:29:06  1 of 5 START sql table model RAW_public.dim_address ............................ [RUN]
+[2025-05-06T00:29:06.145+0000] {subprocess.py:93} INFO - [0m00:29:06  2 of 5 START sql table model RAW_public.dim_customer ........................... [RUN]
+[2025-05-06T00:29:06.153+0000] {subprocess.py:93} INFO - [0m00:29:06  3 of 5 START sql incremental model RAW_public.fact_churn ....................... [RUN]
+[2025-05-06T00:29:09.187+0000] {subprocess.py:93} INFO - [0m00:29:09  3 of 5 OK created sql incremental model RAW_public.fact_churn .................. [[32mSUCCESS 0[0m in 3.02s]
+[2025-05-06T00:29:09.192+0000] {subprocess.py:93} INFO - [0m00:29:09  4 of 5 START sql table model RAW_public.churn_metrics .......................... [RUN]
+[2025-05-06T00:29:10.454+0000] {subprocess.py:93} INFO - [0m00:29:10  2 of 5 OK created sql table model RAW_public.dim_customer ...................... [[32mSUCCESS 1[0m in 4.29s]
+[2025-05-06T00:29:10.863+0000] {subprocess.py:93} INFO - [0m00:29:10  1 of 5 OK created sql table model RAW_public.dim_address ....................... [[32mSUCCESS 1[0m in 4.70s]
+[2025-05-06T00:29:10.867+0000] {subprocess.py:93} INFO - [0m00:29:10  5 of 5 START sql table model RAW_public.churn_map .............................. [RUN]
+[2025-05-06T00:29:11.799+0000] {subprocess.py:93} INFO - [0m00:29:11  4 of 5 OK created sql table model RAW_public.churn_metrics ..................... [[32mSUCCESS 1[0m in 2.60s]
+[2025-05-06T00:29:14.155+0000] {subprocess.py:93} INFO - [0m00:29:14  5 of 5 OK created sql table model RAW_public.churn_map ......................... [[32mSUCCESS 1[0m in 3.28s]
+[2025-05-06T00:29:14.163+0000] {subprocess.py:93} INFO - [0m00:29:14
+[2025-05-06T00:29:14.165+0000] {subprocess.py:93} INFO - [0m00:29:14  Finished running 1 incremental model, 4 table models in 0 hours 0 minutes and 9.57 seconds (9.57s).
+[2025-05-06T00:29:14.303+0000] {subprocess.py:93} INFO - [0m00:29:14
+[2025-05-06T00:29:14.305+0000] {subprocess.py:93} INFO - [0m00:29:14  [32mCompleted successfully[0m
+[2025-05-06T00:29:14.305+0000] {subprocess.py:93} INFO - [0m00:29:14
+[2025-05-06T00:29:14.306+0000] {subprocess.py:93} INFO - [0m00:29:14  Done. PASS=5 WARN=0 ERROR=0 SKIP=0 TOTAL=5
+[2025-05-06T00:29:15.018+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-05-06T00:29:15.041+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-05-06T00:29:15.042+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=dbt_sequential_run, task_id=dbt_run_marts, run_id=manual__2025-05-06T00:04:35.922172+00:00, execution_date=20250506T000435, start_date=20250506T002859, end_date=20250506T002915
+[2025-05-06T00:29:15.081+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-05-06T00:29:15.107+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-05-06T00:29:15.110+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

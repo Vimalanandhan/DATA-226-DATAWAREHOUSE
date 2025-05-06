@@ -1,0 +1,165 @@
+[2025-05-05T23:20:56.551+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-05-05T23:20:56.572+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_deps scheduled__2025-05-04T02:00:00+00:00 [queued]>
+[2025-05-05T23:20:56.581+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_deps scheduled__2025-05-04T02:00:00+00:00 [queued]>
+[2025-05-05T23:20:56.583+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-05-05T23:20:56.603+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): dbt_deps> on 2025-05-04 02:00:00+00:00
+[2025-05-05T23:20:56.623+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dbt_sequential_run', 'dbt_deps', 'scheduled__2025-05-04T02:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/dbt_run_dag.py', '--cfg-path', '/tmp/tmpfodzmsmp']
+[2025-05-05T23:20:56.626+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=528) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-05-05T23:20:56.626+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask dbt_deps
+[2025-05-05T23:20:56.627+0000] {standard_task_runner.py:72} INFO - Started process 529 to run task
+[2025-05-05T23:20:56.689+0000] {task_command.py:467} INFO - Running <TaskInstance: dbt_sequential_run.dbt_deps scheduled__2025-05-04T02:00:00+00:00 [running]> on host 5f6a5c55bc08
+[2025-05-05T23:20:56.782+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_sequential_run' AIRFLOW_CTX_TASK_ID='dbt_deps' AIRFLOW_CTX_EXECUTION_DATE='2025-05-04T02:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-05-04T02:00:00+00:00'
+[2025-05-05T23:20:56.785+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-05-05T23:20:56.861+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-05-05T23:20:56.864+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '/home/***/.local/bin/dbt deps --profiles-dir /opt/***/project --project-dir /opt/***/project']
+[2025-05-05T23:20:56.874+0000] {subprocess.py:86} INFO - Output:
+[2025-05-05T23:20:59.406+0000] {subprocess.py:93} INFO - [0m23:20:59  Running with dbt=1.8.7
+[2025-05-05T23:20:59.407+0000] {subprocess.py:93} INFO - [0m23:20:59  Encountered an error:
+[2025-05-05T23:20:59.408+0000] {subprocess.py:93} INFO - Runtime Error
+[2025-05-05T23:20:59.409+0000] {subprocess.py:93} INFO -   No dbt_project.yml found at expected path /opt/***/project/dbt_project.yml
+[2025-05-05T23:20:59.410+0000] {subprocess.py:93} INFO -   Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+[2025-05-05T23:20:59.410+0000] {subprocess.py:93} INFO - 
+[2025-05-05T23:21:00.259+0000] {subprocess.py:97} INFO - Command exited with return code 2
+[2025-05-05T23:21:00.274+0000] {taskinstance.py:3310} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 249, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 2.
+[2025-05-05T23:21:00.290+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=dbt_sequential_run, task_id=dbt_deps, run_id=scheduled__2025-05-04T02:00:00+00:00, execution_date=20250504T020000, start_date=20250505T232056, end_date=20250505T232100
+[2025-05-05T23:21:00.319+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-05-05T23:21:00.322+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 4 for task dbt_deps (Bash command failed. The command returned a non-zero exit code 2.; 529)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 115, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3004, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3158, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3182, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 249, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 2.
+[2025-05-05T23:21:00.344+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-05-05T23:21:00.392+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-05-05T23:21:00.397+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-05-05T23:39:37.079+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-05-05T23:39:37.106+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_deps scheduled__2025-05-04T02:00:00+00:00 [queued]>
+[2025-05-05T23:39:37.120+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_deps scheduled__2025-05-04T02:00:00+00:00 [queued]>
+[2025-05-05T23:39:37.121+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-05-05T23:39:37.142+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): dbt_deps> on 2025-05-04 02:00:00+00:00
+[2025-05-05T23:39:37.153+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dbt_sequential_run', 'dbt_deps', 'scheduled__2025-05-04T02:00:00+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/dbt_run_dag.py', '--cfg-path', '/tmp/tmpehyoeh4m']
+[2025-05-05T23:39:37.159+0000] {standard_task_runner.py:105} INFO - Job 12: Subtask dbt_deps
+[2025-05-05T23:39:37.160+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=373) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-05-05T23:39:37.162+0000] {standard_task_runner.py:72} INFO - Started process 376 to run task
+[2025-05-05T23:39:37.251+0000] {task_command.py:467} INFO - Running <TaskInstance: dbt_sequential_run.dbt_deps scheduled__2025-05-04T02:00:00+00:00 [running]> on host 5f6a5c55bc08
+[2025-05-05T23:39:37.383+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_sequential_run' AIRFLOW_CTX_TASK_ID='dbt_deps' AIRFLOW_CTX_EXECUTION_DATE='2025-05-04T02:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-05-04T02:00:00+00:00'
+[2025-05-05T23:39:37.384+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-05-05T23:39:37.409+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-05-05T23:39:37.411+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '/home/***/.local/bin/dbt deps --profiles-dir /opt/***/dbt --project-dir /opt/***/dbt']
+[2025-05-05T23:39:37.425+0000] {subprocess.py:86} INFO - Output:
+[2025-05-05T23:39:39.964+0000] {subprocess.py:93} INFO - [0m23:39:39  Running with dbt=1.8.7
+[2025-05-05T23:39:40.133+0000] {subprocess.py:93} INFO - [0m23:39:40  Warning: No packages were found in packages.yml
+[2025-05-05T23:39:40.151+0000] {subprocess.py:93} INFO - [0m23:39:40  Warning: No packages were found in packages.yml
+[2025-05-05T23:39:40.844+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-05-05T23:39:40.887+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-05-05T23:39:40.888+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=dbt_sequential_run, task_id=dbt_deps, run_id=scheduled__2025-05-04T02:00:00+00:00, execution_date=20250504T020000, start_date=20250505T233937, end_date=20250505T233940
+[2025-05-05T23:39:40.911+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-05-05T23:39:40.933+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-05-05T23:39:40.935+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-05-05T23:48:44.963+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-05-05T23:48:45.002+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_deps scheduled__2025-05-04T02:00:00+00:00 [queued]>
+[2025-05-05T23:48:45.027+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_deps scheduled__2025-05-04T02:00:00+00:00 [queued]>
+[2025-05-05T23:48:45.029+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-05-05T23:48:45.056+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): dbt_deps> on 2025-05-04 02:00:00+00:00
+[2025-05-05T23:48:45.072+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dbt_sequential_run', 'dbt_deps', 'scheduled__2025-05-04T02:00:00+00:00', '--job-id', '27', '--raw', '--subdir', 'DAGS_FOLDER/dbt_run_dag.py', '--cfg-path', '/tmp/tmprgs7bsm4']
+[2025-05-05T23:48:45.079+0000] {standard_task_runner.py:105} INFO - Job 27: Subtask dbt_deps
+[2025-05-05T23:48:45.080+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=1134) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-05-05T23:48:45.082+0000] {standard_task_runner.py:72} INFO - Started process 1136 to run task
+[2025-05-05T23:48:45.171+0000] {task_command.py:467} INFO - Running <TaskInstance: dbt_sequential_run.dbt_deps scheduled__2025-05-04T02:00:00+00:00 [running]> on host 5f6a5c55bc08
+[2025-05-05T23:48:45.336+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_sequential_run' AIRFLOW_CTX_TASK_ID='dbt_deps' AIRFLOW_CTX_EXECUTION_DATE='2025-05-04T02:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-05-04T02:00:00+00:00'
+[2025-05-05T23:48:45.338+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-05-05T23:48:45.372+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-05-05T23:48:45.375+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '/home/***/.local/bin/dbt deps --profiles-dir /opt/***/dbt --project-dir /opt/***/dbt']
+[2025-05-05T23:48:45.391+0000] {subprocess.py:86} INFO - Output:
+[2025-05-05T23:48:49.453+0000] {subprocess.py:93} INFO - [0m23:48:49  Running with dbt=1.8.7
+[2025-05-05T23:48:49.738+0000] {subprocess.py:93} INFO - [0m23:48:49  Warning: No packages were found in packages.yml
+[2025-05-05T23:48:49.754+0000] {subprocess.py:93} INFO - [0m23:48:49  Warning: No packages were found in packages.yml
+[2025-05-05T23:48:50.481+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-05-05T23:48:50.516+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-05-05T23:48:50.517+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=dbt_sequential_run, task_id=dbt_deps, run_id=scheduled__2025-05-04T02:00:00+00:00, execution_date=20250504T020000, start_date=20250505T234845, end_date=20250505T234850
+[2025-05-05T23:48:50.567+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-05-05T23:48:50.607+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-05-05T23:48:50.610+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-05-05T23:53:53.546+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-05-05T23:53:53.576+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_deps scheduled__2025-05-04T02:00:00+00:00 [queued]>
+[2025-05-05T23:53:53.590+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_deps scheduled__2025-05-04T02:00:00+00:00 [queued]>
+[2025-05-05T23:53:53.591+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-05-05T23:53:53.612+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): dbt_deps> on 2025-05-04 02:00:00+00:00
+[2025-05-05T23:53:53.624+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dbt_sequential_run', 'dbt_deps', 'scheduled__2025-05-04T02:00:00+00:00', '--job-id', '35', '--raw', '--subdir', 'DAGS_FOLDER/dbt_run_dag.py', '--cfg-path', '/tmp/tmpvs8v68bn']
+[2025-05-05T23:53:53.630+0000] {standard_task_runner.py:105} INFO - Job 35: Subtask dbt_deps
+[2025-05-05T23:53:53.631+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=1601) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-05-05T23:53:53.633+0000] {standard_task_runner.py:72} INFO - Started process 1602 to run task
+[2025-05-05T23:53:53.711+0000] {task_command.py:467} INFO - Running <TaskInstance: dbt_sequential_run.dbt_deps scheduled__2025-05-04T02:00:00+00:00 [running]> on host 5f6a5c55bc08
+[2025-05-05T23:53:53.839+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_sequential_run' AIRFLOW_CTX_TASK_ID='dbt_deps' AIRFLOW_CTX_EXECUTION_DATE='2025-05-04T02:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-05-04T02:00:00+00:00'
+[2025-05-05T23:53:53.840+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-05-05T23:53:53.867+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-05-05T23:53:53.869+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '/home/***/.local/bin/dbt deps --profiles-dir /opt/***/dbt --project-dir /opt/***/dbt']
+[2025-05-05T23:53:53.879+0000] {subprocess.py:86} INFO - Output:
+[2025-05-05T23:53:58.139+0000] {subprocess.py:93} INFO - [0m23:53:58  Running with dbt=1.8.7
+[2025-05-05T23:53:58.322+0000] {subprocess.py:93} INFO - [0m23:53:58  Warning: No packages were found in packages.yml
+[2025-05-05T23:53:58.333+0000] {subprocess.py:93} INFO - [0m23:53:58  Warning: No packages were found in packages.yml
+[2025-05-05T23:53:58.986+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-05-05T23:53:59.020+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-05-05T23:53:59.021+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=dbt_sequential_run, task_id=dbt_deps, run_id=scheduled__2025-05-04T02:00:00+00:00, execution_date=20250504T020000, start_date=20250505T235353, end_date=20250505T235359
+[2025-05-05T23:53:59.079+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-05-05T23:53:59.115+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-05-05T23:53:59.119+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

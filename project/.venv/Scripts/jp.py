@@ -1,4 +1,4 @@
-#!C:\Users\vimal\Desktop\Github\sjsu-data226-SP25\dbt\.venv\Scripts\python.exe
+#!E:\Project\DATA-226-DATAWAREHOUSE\project\.venv\Scripts\python.exe
 
 import sys
 import json

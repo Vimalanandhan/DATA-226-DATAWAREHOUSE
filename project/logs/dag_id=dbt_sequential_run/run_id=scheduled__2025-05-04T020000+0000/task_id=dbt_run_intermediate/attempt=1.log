@@ -1,0 +1,105 @@
+[2025-05-05T23:39:51.741+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-05-05T23:39:51.756+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_run_intermediate scheduled__2025-05-04T02:00:00+00:00 [queued]>
+[2025-05-05T23:39:51.767+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_run_intermediate scheduled__2025-05-04T02:00:00+00:00 [queued]>
+[2025-05-05T23:39:51.768+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-05-05T23:39:51.783+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): dbt_run_intermediate> on 2025-05-04 02:00:00+00:00
+[2025-05-05T23:39:51.790+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dbt_sequential_run', 'dbt_run_intermediate', 'scheduled__2025-05-04T02:00:00+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/dbt_run_dag.py', '--cfg-path', '/tmp/tmpw5y62p09']
+[2025-05-05T23:39:51.794+0000] {standard_task_runner.py:105} INFO - Job 15: Subtask dbt_run_intermediate
+[2025-05-05T23:39:51.794+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=435) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-05-05T23:39:51.799+0000] {standard_task_runner.py:72} INFO - Started process 436 to run task
+[2025-05-05T23:39:51.848+0000] {task_command.py:467} INFO - Running <TaskInstance: dbt_sequential_run.dbt_run_intermediate scheduled__2025-05-04T02:00:00+00:00 [running]> on host 5f6a5c55bc08
+[2025-05-05T23:39:51.928+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_sequential_run' AIRFLOW_CTX_TASK_ID='dbt_run_intermediate' AIRFLOW_CTX_EXECUTION_DATE='2025-05-04T02:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-05-04T02:00:00+00:00'
+[2025-05-05T23:39:51.929+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-05-05T23:39:51.944+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-05-05T23:39:51.946+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '/home/***/.local/bin/dbt run --profiles-dir /opt/***/dbt --project-dir /opt/***/dbt --select intermediate']
+[2025-05-05T23:39:51.955+0000] {subprocess.py:86} INFO - Output:
+[2025-05-05T23:39:55.332+0000] {subprocess.py:93} INFO - [0m23:39:55  Running with dbt=1.8.7
+[2025-05-05T23:39:56.590+0000] {subprocess.py:93} INFO - [0m23:39:56  Registered adapter: snowflake=1.8.1
+[2025-05-05T23:39:58.000+0000] {subprocess.py:93} INFO - [0m23:39:57  Found 12 models, 10 data tests, 7 sources, 459 macros
+[2025-05-05T23:39:58.005+0000] {subprocess.py:93} INFO - [0m23:39:58
+[2025-05-05T23:39:59.954+0000] {subprocess.py:93} INFO - [0m23:39:59  Concurrency: 4 threads (target='dev')
+[2025-05-05T23:39:59.956+0000] {subprocess.py:93} INFO - [0m23:39:59
+[2025-05-05T23:39:59.977+0000] {subprocess.py:93} INFO - [0m23:39:59  1 of 1 START sql view model RAW_public.int_customer_enriched ................... [RUN]
+[2025-05-05T23:40:01.000+0000] {subprocess.py:93} INFO - [0m23:40:00  1 of 1 OK created sql view model RAW_public.int_customer_enriched .............. [[32mSUCCESS 1[0m in 1.01s]
+[2025-05-05T23:40:01.012+0000] {subprocess.py:93} INFO - [0m23:40:01
+[2025-05-05T23:40:01.013+0000] {subprocess.py:93} INFO - [0m23:40:01  Finished running 1 view model in 0 hours 0 minutes and 3.01 seconds (3.01s).
+[2025-05-05T23:40:01.204+0000] {subprocess.py:93} INFO - [0m23:40:01
+[2025-05-05T23:40:01.206+0000] {subprocess.py:93} INFO - [0m23:40:01  [32mCompleted successfully[0m
+[2025-05-05T23:40:01.208+0000] {subprocess.py:93} INFO - [0m23:40:01
+[2025-05-05T23:40:01.212+0000] {subprocess.py:93} INFO - [0m23:40:01  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[2025-05-05T23:40:01.958+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-05-05T23:40:01.987+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-05-05T23:40:01.989+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=dbt_sequential_run, task_id=dbt_run_intermediate, run_id=scheduled__2025-05-04T02:00:00+00:00, execution_date=20250504T020000, start_date=20250505T233951, end_date=20250505T234001
+[2025-05-05T23:40:02.020+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-05-05T23:40:02.057+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-05-05T23:40:02.063+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-05-05T23:49:10.175+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-05-05T23:49:10.197+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_run_intermediate scheduled__2025-05-04T02:00:00+00:00 [queued]>
+[2025-05-05T23:49:10.210+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_run_intermediate scheduled__2025-05-04T02:00:00+00:00 [queued]>
+[2025-05-05T23:49:10.211+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-05-05T23:49:10.229+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): dbt_run_intermediate> on 2025-05-04 02:00:00+00:00
+[2025-05-05T23:49:10.239+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dbt_sequential_run', 'dbt_run_intermediate', 'scheduled__2025-05-04T02:00:00+00:00', '--job-id', '31', '--raw', '--subdir', 'DAGS_FOLDER/dbt_run_dag.py', '--cfg-path', '/tmp/tmpblh4cgb_']
+[2025-05-05T23:49:10.242+0000] {standard_task_runner.py:105} INFO - Job 31: Subtask dbt_run_intermediate
+[2025-05-05T23:49:10.243+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=1313) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-05-05T23:49:10.244+0000] {standard_task_runner.py:72} INFO - Started process 1314 to run task
+[2025-05-05T23:49:10.303+0000] {task_command.py:467} INFO - Running <TaskInstance: dbt_sequential_run.dbt_run_intermediate scheduled__2025-05-04T02:00:00+00:00 [running]> on host 5f6a5c55bc08
+[2025-05-05T23:49:10.395+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_sequential_run' AIRFLOW_CTX_TASK_ID='dbt_run_intermediate' AIRFLOW_CTX_EXECUTION_DATE='2025-05-04T02:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-05-04T02:00:00+00:00'
+[2025-05-05T23:49:10.396+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-05-05T23:49:10.413+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-05-05T23:49:10.417+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '/home/***/.local/bin/dbt run --profiles-dir /opt/***/dbt --project-dir /opt/***/dbt --select intermediate']
+[2025-05-05T23:49:10.426+0000] {subprocess.py:86} INFO - Output:
+[2025-05-05T23:49:14.530+0000] {subprocess.py:93} INFO - [0m23:49:14  Running with dbt=1.8.7
+[2025-05-05T23:49:15.975+0000] {subprocess.py:93} INFO - [0m23:49:15  Registered adapter: snowflake=1.8.1
+[2025-05-05T23:49:17.501+0000] {subprocess.py:93} INFO - [0m23:49:17  Found 12 models, 10 data tests, 7 sources, 459 macros
+[2025-05-05T23:49:17.506+0000] {subprocess.py:93} INFO - [0m23:49:17
+[2025-05-05T23:49:19.635+0000] {subprocess.py:93} INFO - [0m23:49:19  Concurrency: 4 threads (target='dev')
+[2025-05-05T23:49:19.638+0000] {subprocess.py:93} INFO - [0m23:49:19
+[2025-05-05T23:49:19.654+0000] {subprocess.py:93} INFO - [0m23:49:19  1 of 1 START sql view model RAW_public.int_customer_enriched ................... [RUN]
+[2025-05-05T23:49:21.004+0000] {subprocess.py:93} INFO - [0m23:49:21  1 of 1 OK created sql view model RAW_public.int_customer_enriched .............. [[32mSUCCESS 1[0m in 1.34s]
+[2025-05-05T23:49:21.012+0000] {subprocess.py:93} INFO - [0m23:49:21
+[2025-05-05T23:49:21.013+0000] {subprocess.py:93} INFO - [0m23:49:21  Finished running 1 view model in 0 hours 0 minutes and 3.50 seconds (3.50s).
+[2025-05-05T23:49:21.122+0000] {subprocess.py:93} INFO - [0m23:49:21
+[2025-05-05T23:49:21.123+0000] {subprocess.py:93} INFO - [0m23:49:21  [32mCompleted successfully[0m
+[2025-05-05T23:49:21.124+0000] {subprocess.py:93} INFO - [0m23:49:21
+[2025-05-05T23:49:21.125+0000] {subprocess.py:93} INFO - [0m23:49:21  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[2025-05-05T23:49:21.927+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-05-05T23:49:21.957+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-05-05T23:49:21.958+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=dbt_sequential_run, task_id=dbt_run_intermediate, run_id=scheduled__2025-05-04T02:00:00+00:00, execution_date=20250504T020000, start_date=20250505T234910, end_date=20250505T234921
+[2025-05-05T23:49:22.004+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-05-05T23:49:22.034+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-05-05T23:49:22.037+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-05-05T23:54:10.848+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-05-05T23:54:10.862+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_run_intermediate scheduled__2025-05-04T02:00:00+00:00 [queued]>
+[2025-05-05T23:54:10.872+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_sequential_run.dbt_run_intermediate scheduled__2025-05-04T02:00:00+00:00 [queued]>
+[2025-05-05T23:54:10.877+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-05-05T23:54:10.892+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): dbt_run_intermediate> on 2025-05-04 02:00:00+00:00
+[2025-05-05T23:54:10.900+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dbt_sequential_run', 'dbt_run_intermediate', 'scheduled__2025-05-04T02:00:00+00:00', '--job-id', '38', '--raw', '--subdir', 'DAGS_FOLDER/dbt_run_dag.py', '--cfg-path', '/tmp/tmp96s0mfc3']
+[2025-05-05T23:54:10.903+0000] {standard_task_runner.py:105} INFO - Job 38: Subtask dbt_run_intermediate
+[2025-05-05T23:54:10.903+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=1700) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-05-05T23:54:10.904+0000] {standard_task_runner.py:72} INFO - Started process 1701 to run task
+[2025-05-05T23:54:10.957+0000] {task_command.py:467} INFO - Running <TaskInstance: dbt_sequential_run.dbt_run_intermediate scheduled__2025-05-04T02:00:00+00:00 [running]> on host 5f6a5c55bc08
+[2025-05-05T23:54:11.047+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_sequential_run' AIRFLOW_CTX_TASK_ID='dbt_run_intermediate' AIRFLOW_CTX_EXECUTION_DATE='2025-05-04T02:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-05-04T02:00:00+00:00'
+[2025-05-05T23:54:11.048+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-05-05T23:54:11.066+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-05-05T23:54:11.069+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '/home/***/.local/bin/dbt run --profiles-dir /opt/***/dbt --project-dir /opt/***/dbt --select intermediate']
+[2025-05-05T23:54:11.079+0000] {subprocess.py:86} INFO - Output:
+[2025-05-05T23:54:12.973+0000] {subprocess.py:93} INFO - [0m23:54:12  Running with dbt=1.8.7
+[2025-05-05T23:54:14.427+0000] {subprocess.py:93} INFO - [0m23:54:14  Registered adapter: snowflake=1.8.1
+[2025-05-05T23:54:16.071+0000] {subprocess.py:93} INFO - [0m23:54:16  Found 12 models, 10 data tests, 7 sources, 459 macros
+[2025-05-05T23:54:16.076+0000] {subprocess.py:93} INFO - [0m23:54:16
+[2025-05-05T23:54:17.894+0000] {subprocess.py:93} INFO - [0m23:54:17  Concurrency: 4 threads (target='dev')
+[2025-05-05T23:54:17.895+0000] {subprocess.py:93} INFO - [0m23:54:17
+[2025-05-05T23:54:17.907+0000] {subprocess.py:93} INFO - [0m23:54:17  1 of 1 START sql view model RAW_public.int_customer_enriched ................... [RUN]
+[2025-05-05T23:54:19.075+0000] {subprocess.py:93} INFO - [0m23:54:19  1 of 1 OK created sql view model RAW_public.int_customer_enriched .............. [[32mSUCCESS 1[0m in 1.15s]
+[2025-05-05T23:54:19.120+0000] {subprocess.py:93} INFO - [0m23:54:19
+[2025-05-05T23:54:19.150+0000] {subprocess.py:93} INFO - [0m23:54:19  Finished running 1 view model in 0 hours 0 minutes and 3.04 seconds (3.04s).
+[2025-05-05T23:54:19.603+0000] {subprocess.py:93} INFO - [0m23:54:19
+[2025-05-05T23:54:19.605+0000] {subprocess.py:93} INFO - [0m23:54:19  [32mCompleted successfully[0m
+[2025-05-05T23:54:19.606+0000] {subprocess.py:93} INFO - [0m23:54:19
+[2025-05-05T23:54:19.610+0000] {subprocess.py:93} INFO - [0m23:54:19  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[2025-05-05T23:54:20.451+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-05-05T23:54:20.484+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-05-05T23:54:20.491+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=dbt_sequential_run, task_id=dbt_run_intermediate, run_id=scheduled__2025-05-04T02:00:00+00:00, execution_date=20250504T020000, start_date=20250505T235410, end_date=20250505T235420
+[2025-05-05T23:54:20.518+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-05-05T23:54:20.545+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-05-05T23:54:20.548+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

@@ -21,9 +21,9 @@
                 {% do predicates.append(this_key_match) %}
             {% endfor %}
         {% else %}
-            {% set unique_key_match %}
-                DBT_INTERNAL_SOURCE.{{ unique_key }} = DBT_INTERNAL_DEST.{{ unique_key }}
-            {% endset %}
+            {% set source_unique_key = ("DBT_INTERNAL_SOURCE." ~ unique_key) | trim %}
+	    {% set target_unique_key = ("DBT_INTERNAL_DEST." ~ unique_key) | trim %}
+	    {% set unique_key_match = equals(source_unique_key, target_unique_key) | trim %}
             {% do predicates.append(unique_key_match) %}
         {% endif %}
     {% else %}
@@ -61,34 +61,23 @@
     {%- set dest_cols_csv = get_quoted_csv(dest_columns | map(attribute="name")) -%}
 
     {% if unique_key %}
-        {% if unique_key is sequence and unique_key is not string %}
-            delete from {{target }}
-            using {{ source }}
-            where (
-                {% for key in unique_key %}
-                    {{ source }}.{{ key }} = {{ target }}.{{ key }}
-                    {{ "and " if not loop.last}}
-                {% endfor %}
-                {% if incremental_predicates %}
-                    {% for predicate in incremental_predicates %}
-                        and {{ predicate }}
-                    {% endfor %}
-                {% endif %}
-            );
-        {% else %}
-            delete from {{ target }}
-            where (
-                {{ unique_key }}) in (
-                select ({{ unique_key }})
-                from {{ source }}
-            )
-            {%- if incremental_predicates %}
-                {% for predicate in incremental_predicates %}
-                    and {{ predicate }}
-                {% endfor %}
-            {%- endif -%};
-
+        {% if unique_key is string %}
+        {% set unique_key = [unique_key] %}
         {% endif %}
+
+        {%- set unique_key_str = unique_key|join(', ') -%}
+
+        delete from {{ target }} as DBT_INTERNAL_DEST
+        where ({{ unique_key_str }}) in (
+            select distinct {{ unique_key_str }}
+            from {{ source }} as DBT_INTERNAL_SOURCE
+        )
+        {%- if incremental_predicates %}
+            {% for predicate in incremental_predicates %}
+                and {{ predicate }}
+            {% endfor %}
+        {%- endif -%};
+
     {% endif %}
 
     insert into {{ target }} ({{ dest_cols_csv }})
