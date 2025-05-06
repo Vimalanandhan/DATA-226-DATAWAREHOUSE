@@ -830,3 +830,11 @@
 [2025-05-06T00:54:37.811+0000] {logging_mixin.py:190} INFO - [2025-05-06T00:54:37.811+0000] {dag.py:3229} INFO - Sync 1 DAGs
 [2025-05-06T00:54:37.828+0000] {logging_mixin.py:190} INFO - [2025-05-06T00:54:37.828+0000] {dag.py:4156} INFO - Setting next_dagrun for dbt_sequential_run to 2025-05-05 02:00:00+00:00, run_after=2025-05-06 02:00:00+00:00
 [2025-05-06T00:54:37.863+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dbt_run_dag.py took 0.366 seconds
+[2025-05-06T00:55:08.873+0000] {processor.py:186} INFO - Started process (PID=3910) to work on /opt/airflow/dags/dbt_run_dag.py
+[2025-05-06T00:55:08.874+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dbt_run_dag.py for tasks to queue
+[2025-05-06T00:55:08.876+0000] {logging_mixin.py:190} INFO - [2025-05-06T00:55:08.876+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/dbt_run_dag.py
+[2025-05-06T00:55:08.911+0000] {logging_mixin.py:190} INFO - [2025-05-06T00:55:08.911+0000] {base.py:84} INFO - Retrieving connection 'snowflake_conn'
+[2025-05-06T00:55:08.923+0000] {processor.py:925} INFO - DAG(s) 'dbt_sequential_run' retrieved from /opt/airflow/dags/dbt_run_dag.py
+[2025-05-06T00:55:08.943+0000] {logging_mixin.py:190} INFO - [2025-05-06T00:55:08.942+0000] {dag.py:3229} INFO - Sync 1 DAGs
+[2025-05-06T00:55:08.971+0000] {logging_mixin.py:190} INFO - [2025-05-06T00:55:08.971+0000] {dag.py:4156} INFO - Setting next_dagrun for dbt_sequential_run to 2025-05-05 02:00:00+00:00, run_after=2025-05-06 02:00:00+00:00
+[2025-05-06T00:55:08.995+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dbt_run_dag.py took 0.127 seconds
